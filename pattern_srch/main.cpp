@@ -12,7 +12,13 @@
 
 
 int strstr(const char *text, const char *pattern) {
-    
+    unsigned position = 0;
+    unsigned pattern_length = 0;
+    while (*pattern++) {pattern_length++};
+    while (pattern_length) {
+        if () {
+        }
+    }
 }
 
 int main() {
