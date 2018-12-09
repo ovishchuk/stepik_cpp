@@ -31,15 +31,24 @@ char *resize(const char *str, unsigned size, unsigned new_size)
 
 char *getline()
 {
-    
-    while (1) // temporary
-    {
+    char c = '\0'; //инициализация контейнера
+	unsigned current_size = 10; // начальный размер - 10
+	char * str = new char[current_size];
+	unsigned i; //счётчик
 
-    }
-    return 0;
+	for (i = 0; std::cin.get(c) && c != '\n'; ++i) // ходим до конца ввода
+    {
+		str[i] = c; // пишем символ
+		//если приближаемся к концу увеличиваем массив в 1,5 раза
+        //(current_size - 2) потому что надо оставить место под \0 на случай если это последняя итерация
+		if (i == current_size - 2) str = resize(str, current_size, current_size *= 1.5);
+	} 
+	str[i] = '\0'; // добавляем в конце
+	return resize(str, current_size, i + 1); // подгоняем финальный размер (i + 1) в целях экономии
 }
 
 int main(int argc, char const *argv[])
-{    
+{
+    cout << getline() << endl;
     return 0;
 }
